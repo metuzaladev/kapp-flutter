@@ -52,11 +52,15 @@ class AppChip extends StatelessWidget {
           borderRadius: BorderRadius.circular(Radii.full),
           border: Border.all(color: c.border, width: 0.5),
         ),
-        alignment: Alignment.center,
-        child: AnimatedDefaultTextStyle(
-          duration: duration,
-          style: textStyle(TextType.caption, color: selected ? c.onBrand : c.text),
-          child: Text(label, textAlign: TextAlign.center),
+        // Shrink-wraps the label: the width comes from the text, a parent may set a minimum.
+        child: Center(
+          widthFactor: 1,
+          heightFactor: 1,
+          child: AnimatedDefaultTextStyle(
+            duration: duration,
+            style: textStyle(TextType.caption, color: selected ? c.onBrand : c.text),
+            child: Text(label, textAlign: TextAlign.center),
+          ),
         ),
       ),
     );

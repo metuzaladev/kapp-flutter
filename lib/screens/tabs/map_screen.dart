@@ -415,8 +415,10 @@ class MapScreen extends HookWidget {
                   const SizedBox(height: Spacing.three),
                   Row(
                     children: [
-                      const Flexible(child: CommunityEntry()),
-                      const Spacer(),
+                      // The entry takes the free width and shrinks only when the label must wrap.
+                      const Expanded(
+                        child: Align(alignment: Alignment.centerLeft, child: CommunityEntry()),
+                      ),
                       AppIconButton(
                         icon: IconName.map,
                         label: context.t('map.openList'),

@@ -18,8 +18,16 @@ Flutter port of the Käpp dog park app (TalTech ICD0018). The React Native origi
 - `lib/components`, `lib/screens` — Figma components and all screens of the RN app.
 - `assets/i18n`, `assets/data` — translations and legal texts exported from `packages/shared`.
 
+## Tests
+
+- `flutter test` — unit tests for the pure logic, formatting and plural rules, the cookie store, the
+  query cache, the stores and the auth redirect (ported from the React Native app's Vitest suite).
+- `flutter test integration_test/app_flow_test.dart -d <simulator>` and `screens_tour_test.dart` —
+  end-to-end walks against a running development API, simulator language English: sign-up, the tabs,
+  a dog with health records, parks and check-in, services and booking, Käpad and the shop, community,
+  language and dark mode. Each `STEP:` line in the output marks a screen worth a screenshot.
+
 ## Known gaps
 
 - Push notifications are not wired up (the API expects Expo push tokens).
 - Maps use OpenFreeMap vector tiles via flutter_map; zoom levels are MapLibre + 1.
-- `integration_test/app_flow_test.dart` is work in progress (fails after the sign-up step).
